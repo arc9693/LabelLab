@@ -1,28 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from "./components/Home"
 
 function App() {
   return (
     <Router>
       <div>
-        <Header />
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+      </ul>
         <Route exact path="/" component={Home} />
       </div>
     </Router>
-  );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Header() {
-  return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-    </ul>
   );
 }
 
