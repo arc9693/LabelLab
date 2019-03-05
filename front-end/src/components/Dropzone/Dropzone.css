@@ -1,0 +1,25 @@
+@import '../../../node_modules/react-dropzone-component/styles/filepicker.css';
+@import '../../../node_modules/dropzone/dist/min/dropzone.min.css';
+/* DropZone */
+
+div.filepicker {
+	text-align: center;
+	background-color: #E1E1E1;
+	border-radius: 5px;
+	min-height: 80vh;
+	border: 2px dashed #C7C7C7;
+	padding-top: 20%;
+}
+.filepicker .dz-message {
+	font-size: 3vw;
+	color: #37474f;
+	top: 50%;
+	width: 100%;
+}
+.dropzone .dz-preview.dz-image-preview {
+	background: transparent !important;
+	z-index: 0;
+}
+.dz-image {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+}
