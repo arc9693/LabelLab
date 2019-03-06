@@ -4,34 +4,35 @@ import './Dropzone.css'
 export default class Dropzone extends Component {
     constructor(props) {
         super(props);
-
+        Notification.requestPermission();
         // For a full list of possible configurations,
         // please consult http://www.dropzonejs.com/#configuration
         this.djsConfig = {
-            addRemoveLinks: true,
             acceptedFiles: "image/jpeg,image/png,image/gif",
-            autoProcessQueue: false
+            autoProcessQueue: true
         };
 
         this.componentConfig = {
             iconFiletypes: ['.jpg', '.png', '.gif'],
             showFiletypeIcon: true,
-            postUrl: 'no-url'
-        };
+            /*ADD URL OF THE BACKEND HERE*/
+            postUrl: 'http://localhost:5000'
+        }
     }
 
-    handleFileAdded(file) {
-        console.log(file);
-    }
+    success = (file, path) => {
+        console.log(file,path);
+        if(Notification.permission === 'granted') {
+            new Notification('File uploaded successfully');
+        }
+      }
 
     render() {
         const config = this.componentConfig;
         const djsConfig = this.djsConfig;
-
-        // For a list of all possible events (there are many), see README.md!
         const eventHandlers = {
-            addedfile: this.handleFileAdded.bind(this)
-        }
+        success: (file,path) => this.success(file, path)
+        };
 
         return <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} />
     }
