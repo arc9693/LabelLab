@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <div>
-      <nav class="navbar navbar-light bg-dark">
+      <nav className="navbar navbar-light bg-dark">
         <Link to="/" className="navbar-brand text-light">LabelLab</Link>
       </nav>
         <Route exact path="/" component={Home} />
