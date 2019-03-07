@@ -1,0 +1,19 @@
+body{
+  font-family: 'Avenir', Helvetica, Arial, sans-serif  !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar-brand {
+    line-height: 1.2rem !important;
+    padding: 10px 0px 10px 20px;
+}
+.upper {
+  font-weight: 900;
+  font-size: 2rem;
+}
+.lower {
+  font-size:0.8rem;
+  font-weight: 700;
+  color: #9c9c9c;
+  letter-spacing: 2.4rem;
+}

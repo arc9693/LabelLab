@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
+import './ListImages.css';
 export default class ListImages extends Component {
 	constructor(props) {
 		super(props);
@@ -29,8 +30,8 @@ export default class ListImages extends Component {
 	render() {
 		return(
 			<div>
-				<h2 className="text-center">Your images</h2>
-				<div className="conatiner">
+				<h4 className="text-center font-weight-bold border-bottom border-3 pb-3 pt-3">YOUR IMAGES</h4>
+				<div className="container p-0">
 					<div className="row">
 						{this.state.Images.map((image, i) => {
 							return(

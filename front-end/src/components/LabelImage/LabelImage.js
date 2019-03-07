@@ -24,7 +24,9 @@ export default class LabelImage extends Component {
 			.set('Accept', 'application/json')
 			.end ((error, response)=>{
 				const data=response.body;
-				console.log(JSON.stringify(data));
+				if(error) {console.log(error);return;}
+				let path = `/`+this.state.id;
+				this.props.history.push(path);
 			})
 	}
 
@@ -53,6 +55,7 @@ export default class LabelImage extends Component {
 		var {image}=this.state;
 		return (
 			<div className="container p-2">
+				<h6 className="font-italic text-muted">Note: Drag the rectangle to mark the area</h6>
 				<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name} style={{position:'absolute',zIndex:'-1'}}/>
 				<Stage height={this.state.height} width={this.state.width} >
 					<Layer>

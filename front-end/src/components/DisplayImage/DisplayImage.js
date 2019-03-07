@@ -52,14 +52,16 @@ export default class DisplayImage extends Component {
 		return (
 			<div className="container">
 				<div className="row">
-					<div className="col-12 justify-content-center p-5">
+					<div className="col-12 justify-content-center p-3">
 						<canvas ref="canvas" height={this.state.height} width={this.state.width}>
 							<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name}/>
 						</canvas>
 					</div>
-					<div className="col-2 button p-2">
-						{image.has_label==='false'&&(<button className="btn btn-sm btn-success" onClick={this.routeChange}>Add label</button>)}
-						{image.has_label==='true'&&(<button className="btn btn-sm btn-success" onClick={this.routeChange}>Edit label</button>)}
+				</div>
+				<div className="row button-con">
+					<div className="col-2 button ml-4">
+						{image.has_label==='false'&&(<button className="btn btn-sm btn-light" onClick={this.routeChange}>Add label</button>)}
+						{image.has_label==='true'&&(<button className="btn btn-sm btn-light" onClick={this.routeChange}>Edit label</button>)}
 					</div>
 				</div>
 			</div>
