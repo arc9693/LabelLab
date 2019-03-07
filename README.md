@@ -35,12 +35,12 @@ yarn start or npm start
 ```
 create database LabelLab
 ```
-2. In back-end folder of the project,type:
+2. In the command line terminal or bash,type:
 ```
 mysql -u root -p  LabelLab < LabelLab.sql
 ```
 #### Set up backend
-- Open a new terminal and type:
+- Open a new terminal in the project folder and type:
 ```
 cd back-end
 ```
@@ -48,8 +48,11 @@ cd back-end
 ```
 export host=<host> port=<port> user=<db_user> password=<password>
 ```
-
- - Start the server
+- Install the dependencies
+```
+npm i
+```
+- Start the server
  ```
  npm start
  ```
