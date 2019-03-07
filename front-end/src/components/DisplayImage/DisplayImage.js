@@ -33,7 +33,7 @@ export default class DisplayImage extends Component {
 			ctx.strokeStyle="#000"
 			ctx.lineWidth='3'
 			ctx.filter='none'
-			ctx.strokeRect(this.state.image.x,this.state.image.y,this.state.image.height,this.state.image.width)
+			ctx.strokeRect(this.state.image.x,this.state.image.y,this.state.image.width,this.state.image.height)
 			ctx.font = "1rem  Arial";
 			ctx.fillStyle = "black";
 			if(this.state.image.has_label==='true')
@@ -41,7 +41,7 @@ export default class DisplayImage extends Component {
 		}
 	}
 
-	
+
 	routeChange() {
 		let path = `/label/`+this.state.id;
 		this.props.history.push(path);
