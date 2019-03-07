@@ -9,7 +9,7 @@ export default class Dropzone extends Component {
 		this.djsConfig = {
 			acceptedFiles: "image/jpeg,image/png,image/gif",
 			autoProcessQueue: true,
-			resizeWidth: 1000, resizeHeight: 1000,
+			resizeWidth: 800, resizeHeight: 800,
 			resizeMethod: 'contain', resizeQuality: 1.0,
 		};
 
