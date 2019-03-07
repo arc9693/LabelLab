@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - back-end/node_modules
+  - front-end/node_modules
+before_script:
+  - cd front-end
+script:
+  - npm build
+  - npm test
+  
+
