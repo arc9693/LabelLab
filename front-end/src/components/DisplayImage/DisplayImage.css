@@ -1,3 +1,4 @@
-.button{
-  position: absolute !important;
+canvas{
+  border:3px double #343a40;
+  position: absolute;
 }

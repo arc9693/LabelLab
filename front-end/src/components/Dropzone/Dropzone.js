@@ -4,13 +4,12 @@ import './Dropzone.css'
 export default class Dropzone extends Component {
 	constructor(props) {
 		super(props);
-		Notification.requestPermission();
 		// For a full list of possible configurations,
 		// please consult http://www.dropzonejs.com/#configuration
 		this.djsConfig = {
 			acceptedFiles: "image/jpeg,image/png,image/gif",
 			autoProcessQueue: true,
-			resizeWidth: 1000, resizeHeight: 1000,
+			resizeWidth: 800, resizeHeight: 800,
 			resizeMethod: 'contain', resizeQuality: 1.0,
 		};
 
@@ -24,6 +23,7 @@ export default class Dropzone extends Component {
 
 	success (file, path){
 		console.log(file,path);
+		Notification.requestPermission();
 		if(Notification.permission === 'granted') {
 			new Notification('File uploaded successfully');
 		}
