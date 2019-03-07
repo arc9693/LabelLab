@@ -23,6 +23,10 @@ export default class DisplayImage extends Component {
 		const ctx = canvas.getContext("2d")
 		const img = this.refs.image
 		img.onload = () => {
+			this.setState({
+				width: img.width,
+				height: img.height,
+			});
 			ctx.filter='blur(1px)'
 			ctx.drawImage(img, 0, 0)
 			console.log(ctx);
@@ -37,13 +41,7 @@ export default class DisplayImage extends Component {
 		}
 	}
 
-	onImgLoad ({ target: img }){
-		this.setState({
-			width: img.width,
-			height: img.height,
-		});
-	}
-
+	
 	routeChange() {
 		let path = `/label/`+this.state.id;
 		this.props.history.push(path);

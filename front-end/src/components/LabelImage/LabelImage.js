@@ -12,6 +12,7 @@ export default class LabelImage extends Component {
 			isDragging: false,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.onImgLoad = this.onImgLoad.bind(this);
 	}
 
 	handleSubmit(e) {

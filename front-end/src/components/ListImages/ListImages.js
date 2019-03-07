@@ -4,21 +4,27 @@ export default class ListImages extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { Images: [], url:"http://localhost:5000"  };
+		this._isMounted = false;
 	}
 
 	componentDidMount() {
-		request
-			.get(this.state.url)
-			.query(null)
-			.set('Accept', 'application/json')
-			.end ((error, response)=>{
-				const data=response.body;
-				console.log(JSON.stringify(data));
-				this.setState({
-					Images:data
-				})
-			})
+		this._isMounted = true;
+		this._isMounted && (
+			request
+				.get(this.state.url)
+				.query(null)
+				.set('Accept', 'application/json')
+				.end ((error, response)=>{
+					if(error) {console.log(error);return;}
+					const data=response.body;
+					this._isMounted &&(
+						this.setState({
+							Images:data
+						}))
+				}))
 	}
+
+	componentWillUnmount(){this._isMounted = false;}
 
 	render() {
 		return(

@@ -4,7 +4,6 @@ import './Dropzone.css'
 export default class Dropzone extends Component {
 	constructor(props) {
 		super(props);
-		Notification.requestPermission();
 		// For a full list of possible configurations,
 		// please consult http://www.dropzonejs.com/#configuration
 		this.djsConfig = {
@@ -24,6 +23,7 @@ export default class Dropzone extends Component {
 
 	success (file, path){
 		console.log(file,path);
+		Notification.requestPermission();
 		if(Notification.permission === 'granted') {
 			new Notification('File uploaded successfully');
 		}
