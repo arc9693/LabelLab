@@ -9,7 +9,9 @@ export default class Dropzone extends Component {
         // please consult http://www.dropzonejs.com/#configuration
         this.djsConfig = {
             acceptedFiles: "image/jpeg,image/png,image/gif",
-            autoProcessQueue: true
+            autoProcessQueue: true,
+            resizeWidth: 1000, resizeHeight: 1000,
+            resizeMethod: 'contain', resizeQuality: 1.0,
         };
 
         this.componentConfig = {
