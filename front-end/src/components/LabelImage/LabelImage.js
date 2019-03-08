@@ -23,7 +23,6 @@ export default class LabelImage extends Component {
 			.send({id:this.state.id,x:this.state.image.x,y:this.state.image.y,height:this.state.image.height,width:this.state.image.width,label:this.state.image.label })
 			.set('Accept', 'application/json')
 			.end ((error, response)=>{
-				const data=response.body;
 				if(error) {console.log(error);return;}
 				let path = `/`+this.state.id;
 				this.props.history.push(path);
