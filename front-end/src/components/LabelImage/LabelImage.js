@@ -35,6 +35,8 @@ export default class LabelImage extends Component {
 			.query(null)
 			.set('Accept', 'application/json')
 			.end ((error, response)=>{
+				if(error){console.log(error);
+					this.props.history.push('*/*/*');return;}
 				const data=response.body;
 				console.log(JSON.stringify(data));
 				this.setState({
