@@ -1,5 +1,5 @@
 # LabelLab
-This is a task project.
+[![Build Status](https://travis-ci.org/arc9693/LabelLab.svg?branch=master)](https://travis-ci.org/arc9693/LabelLab)
 
 ### Requires
 ```
