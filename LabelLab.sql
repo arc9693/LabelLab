@@ -18,4 +18,4 @@ CREATE TABLE `Images` (
   `height` smallint(6) DEFAULT '100',
   `width` smallint(6) DEFAULT '100',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
