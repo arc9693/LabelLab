@@ -7,6 +7,8 @@ do
     echo "Testing component: $component"
     cd $component
     npm install
+    npm build
+    npm run start &
     npm test
     cd ..
 done
