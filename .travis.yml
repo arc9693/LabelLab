@@ -1,12 +1,12 @@
 language: node_js
 node_js:
   - "11.10.1"
+services:
+  - mysql
+before_install:
+  - mysql -u root --password="" < LabelLab.sql
 cache:
   directories:
   - front-end/node_modules
-before_script:
-  - cd front-end
-  - npm install
-script:
-  - npm run build
-  - npm run test
+  - back-end/node_moduless
+script: "./testscript.sh"
