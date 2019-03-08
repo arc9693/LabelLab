@@ -9,4 +9,4 @@ cache:
   directories:
   - front-end/node_modules
   - back-end/node_moduless
-script: "./testscript.sh"
+script: "bash ./testscript.sh"
