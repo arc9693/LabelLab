@@ -1,5 +1,6 @@
 .konvajs-content{
   position:absolute !important;
+  border:3px double #343a40;
 }
 .labelform{
   background-color: rgba(0,0,0,0.5);
@@ -10,6 +11,6 @@
   border-radius: 0;
   height:1.1rem;
   background-color: grey;
-  border:none;
+  border:0.2px solid white;
   color:white;
 }

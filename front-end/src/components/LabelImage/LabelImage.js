@@ -86,7 +86,7 @@ export default class LabelImage extends Component {
 						/>
 					</Layer>
 				</Stage>
-				<div className="row">
+				<div className="row justify-content-end">
 					<div className="col-3 m-2">
 						<form className="labelform p-2">
 							<div className="form-group row m-1">

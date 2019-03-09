@@ -32,7 +32,7 @@ export default class DisplayImage extends Component {
 				width: img.width,
 				height: img.height,
 			});
-			ctx.filter='blur(1px)'
+			ctx.filter='blur(0.01px)'
 			ctx.drawImage(img, 0, 0)
 			console.log(ctx);
 			ctx.strokeStyle="#000"
@@ -63,10 +63,10 @@ export default class DisplayImage extends Component {
 						</canvas>
 					</div>
 				</div>
-				<div className="row button-con">
+				<div className="row button-con justify-content-end">
 					<div className="col-2 button ml-4">
-						{image.has_label==='false'&&(<button className="btn btn-sm btn-light" onClick={this.routeChange}>Add label</button>)}
-						{image.has_label==='true'&&(<button className="btn btn-sm btn-light" onClick={this.routeChange}>Edit label</button>)}
+						{image.has_label==='false'&&(<button className="btn btn-sm btn-outline-dark" onClick={this.routeChange}>Add label</button>)}
+						{image.has_label==='true'&&(<button className="btn btn-sm btn-outline-dark" onClick={this.routeChange}>Edit label</button>)}
 					</div>
 				</div>
 			</div>
