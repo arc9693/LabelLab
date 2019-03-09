@@ -11,4 +11,6 @@ cache:
   directories:
   - front-end/node_modules
   - back-end/node_modules
+before_script:
+  - mkdir back-end/public/uploads
 script: "bash ./testscript.sh"

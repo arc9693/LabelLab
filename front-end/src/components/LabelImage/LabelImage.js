@@ -35,6 +35,8 @@ export default class LabelImage extends Component {
 			.query(null)
 			.set('Accept', 'application/json')
 			.end ((error, response)=>{
+				if(error){console.log(error);
+					this.props.history.push('*/*/*');return;}
 				const data=response.body;
 				console.log(JSON.stringify(data));
 				this.setState({
@@ -84,7 +86,7 @@ export default class LabelImage extends Component {
 						/>
 					</Layer>
 				</Stage>
-				<div className="row">
+				<div className="row justify-content-end">
 					<div className="col-3 m-2">
 						<form className="labelform p-2">
 							<div className="form-group row m-1">
