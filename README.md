@@ -1,5 +1,5 @@
 # LabelLab
-[![Build Status](https://travis-ci.org/arc9693/LabelLab.svg?branch=master)](https://travis-ci.org/arc9693/LabelLab)
+[![Build Status](https://api.travis-ci.com/arc9693/LabelLab.svg?token=sHUzNrGtEqnTwmf6ZJih&branch=master)](https://travis-ci.com/arc9693/LabelLab)
 
 ### Requires
 ```
