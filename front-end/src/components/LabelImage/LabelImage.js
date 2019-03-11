@@ -67,8 +67,8 @@ export default class LabelImage extends Component {
 					<Layer>
 						<Rect
 							name="label"
-							x={image.x||50}
-							y={image.y||50}
+							x={image.x||this.state.width/2}
+							y={image.y||this.state.height/2}
 							width={image.width||50}
 							height={image.height||50}
 							draggable
