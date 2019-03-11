@@ -35,12 +35,12 @@ export default class DisplayImage extends Component {
 			ctx.filter='blur(0.01px)'
 			ctx.drawImage(img, 0, 0)
 			console.log(ctx);
-			ctx.strokeStyle="#000"
-			ctx.lineWidth='3'
+			ctx.strokeStyle="#FFF"
+			ctx.lineWidth='2'
 			ctx.filter='none'
 			ctx.strokeRect(this.state.image.x,this.state.image.y,this.state.image.width,this.state.image.height)
 			ctx.font = "1rem  Arial";
-			ctx.fillStyle = "black";
+			ctx.fillStyle = "#fff";
 			if(this.state.image.has_label==='true')
 				ctx.fillText(this.state.image.label,this.state.image.x,this.state.image.y+this.state.image.height+16);
 		}
@@ -63,10 +63,10 @@ export default class DisplayImage extends Component {
 						</canvas>
 					</div>
 				</div>
-				<div className="row button-con justify-content-end">
+				<div className="row button-con">
 					<div className="col-2 button ml-4">
-						{image.has_label==='false'&&(<button className="btn btn-sm btn-outline-dark" onClick={this.routeChange}>Add label</button>)}
-						{image.has_label==='true'&&(<button className="btn btn-sm btn-outline-dark" onClick={this.routeChange}>Edit label</button>)}
+						{image.has_label==='false'&&(<button className="btn btn-sm btn-light" onClick={this.routeChange}>Add label</button>)}
+						{image.has_label==='true'&&(<button className="btn btn-sm btn-light" onClick={this.routeChange}>Edit label</button>)}
 					</div>
 				</div>
 			</div>
