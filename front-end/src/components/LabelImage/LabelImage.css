@@ -10,7 +10,6 @@
 .labelform input{
   border-radius: 0;
   height:1.1rem;
-  background-color: grey;
-  border:0.2px solid white;
-  color:white;
+  background-color: white;
+  color:black;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import request from "superagent";
-import { Stage, Layer, Rect } from 'react-konva';
+import { Stage, Layer, Rect,Transformer } from 'react-konva';
 import './LabelImage.css'
 export default class LabelImage extends Component {
 	constructor(props) {
@@ -43,6 +43,11 @@ export default class LabelImage extends Component {
 					image:data[0]
 				})
 			})
+
+		const stage = this.transformer.getStage();
+		const rectangle = stage.findOne(".label");
+		this.transformer.attachTo(rectangle);
+		this.transformer.getLayer().batchDraw();
 	}
 
 	onImgLoad ({ target: img }) {
@@ -61,11 +66,11 @@ export default class LabelImage extends Component {
 				<Stage height={this.state.height} width={this.state.width} >
 					<Layer>
 						<Rect
-							x={image.x}
-							y={image.y}
-							width={image.width}
-							height={image.height}
-							shadowBlur={10}
+							name="label"
+							x={image.x||50}
+							y={image.y||50}
+							width={image.width||50}
+							height={image.height||50}
 							draggable
 							onDragStart={() => {
 								this.setState({
@@ -82,11 +87,26 @@ export default class LabelImage extends Component {
 									image: imageCopy
 								});
 							}}
-							stroke="black"
+							onTransform={e=>{
+								var temp=e.currentTarget.attrs;
+								let imageCopy = JSON.parse(JSON.stringify(this.state.image));
+								imageCopy.width= (temp.width)*(temp.scaleX);
+								imageCopy.height= (temp.height)*(temp.scaleY);
+								this.setState({
+									isDragging: false,
+									image: imageCopy
+								});
+							}}
+						/>
+						<Transformer
+							ref={node => {
+								this.transformer = node;
+							}}
+							rotateEnabled={false}
 						/>
 					</Layer>
 				</Stage>
-				<div className="row justify-content-end">
+				<div className="row">
 					<div className="col-3 m-2">
 						<form className="labelform p-2">
 							<div className="form-group row m-1">
@@ -100,40 +120,6 @@ export default class LabelImage extends Component {
 											let imageCopy = JSON.parse(JSON.stringify(this.state.image))
 											//make changes to ingredients
 											imageCopy.label= e.target.value; //whatever new ingredients are
-											this.setState({
-												image: imageCopy
-											});
-										}}/>
-								</div>
-							</div>
-							<div className="form-group row m-1">
-								<label className="col-3">Height: </label>
-								<div className="col-8 ml-1">
-									<input
-										className="form-control"
-										placeholder="Height"
-										value={image.height||' '}
-										onChange={e => {
-											let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-											//make changes to ingredients
-											imageCopy.height= e.target.value; //whatever new ingredients are
-											this.setState({
-												image: imageCopy
-											});
-										}}/>
-								</div>
-							</div>
-							<div className="form-group row m-1">
-								<label className="col-3">Width: </label>
-								<div className="col-8 ml-1">
-									<input
-										className="form-control"
-										placeholder="Width"
-										value={image.width||' '}
-										onChange={e => {
-											let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-											//make changes to ingredients
-											imageCopy.width= e.target.value; //whatever new ingredients are
 											this.setState({
 												image: imageCopy
 											});
