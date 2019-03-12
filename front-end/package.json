@@ -73,6 +73,7 @@
   ],
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "cypress": "^3.1.5",
     "eslint-config-react-app": "^3.0.8",
     "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-import": "^2.16.0",
