@@ -2,6 +2,7 @@ var expect  = require('chai').expect;
 var request = require('request');
 var app = require('../app');
 var server = require('http').createServer(app);
+var fs = require('fs');
 
 describe('CHECK ROUTES\n', function () {
 
@@ -16,13 +17,7 @@ describe('CHECK ROUTES\n', function () {
       });
     }),
 
-  afterEach( ( done ) => {
-    server.close(function () { console.log('\nServer closed!');done() });
-  })
-
-});
-
-it('Posting an image', function(done) {
+  it('Posting an image', function(done) {
     var formData = {
       file: fs.createReadStream(__dirname+'/test.jpg'),
     };
@@ -32,11 +27,17 @@ it('Posting an image', function(done) {
       expect(response.statusCode).to.equal(200);
       done();
     });
-});
+  });
 
-it('Gets an image', function(done) {
+  it('Gets an image', function(done) {
     request('http://localhost:5000/1' , function(error, response, body) {
       expect(response.statusCode).to.equal(200);
       done();
     });
+  });
+
+  afterEach( ( done ) => {
+    server.close(function () { console.log('\nServer closed!');done() });
+  })
+
 });
