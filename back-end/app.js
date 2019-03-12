@@ -25,7 +25,7 @@ connection.connect((err) => {
     return;
   }
 
-  console.log(`connected as id ${connection.threadId}`);
+//  console.log(`connected as id ${connection.threadId}`);
 });
 
 global.db = connection;
