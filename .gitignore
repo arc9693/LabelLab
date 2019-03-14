@@ -27,3 +27,6 @@ front-end/.env.production.local
 front-end/npm-debug.log*
 front-end/yarn-debug.log*
 front-end/yarn-error.log*
+
+front-end/cypress/screenshots/
+front-end/cypress/videos/
