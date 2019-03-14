@@ -56,3 +56,22 @@ npm i
  ```
  npm start
  ```
+
+### Testing instructions
+#### Unit tests
+- For front-end
+```
+cd front-end
+npm test
+```
+- For back-end
+```
+cd back-end
+npm test
+```
+#### e2e tests`
+```
+cd front-end
+npm run cypress
+```
+
