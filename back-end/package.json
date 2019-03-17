@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha --timeout 10000 --exit"
+    "test": "mocha --timeout 10000 --exit",
+    "lint": "eslint app.js ./routes"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -20,6 +21,9 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.15.2",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "mocha": "^6.0.2",
     "nodemon": "^1.18.10",
     "request": "^2.88.0"

@@ -1,43 +1,41 @@
-var expect  = require('chai').expect;
-var request = require('request');
-var app = require('../app');
-var server = require('http').createServer(app);
-var fs = require('fs');
+const { expect } = require('chai');
+const request = require('request');
+const server = require('http').createServer(app);
+const fs = require('fs');
+const app = require('../app');
 
-describe('CHECK ROUTES\n', function () {
+describe('CHECK ROUTES\n', () => {
+  beforeEach(() => {
+    server.listen(5000, () => { console.log('Server started!\n'); });
+  }),
 
-  beforeEach( () => {
-   server.listen(5000,function () { console.log('Server started!\n'); });
-   } ),
+  it('GET ALL IMAGES', (done) => {
+    request('http://localhost:5000', (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  }),
 
-  it('GET ALL IMAGES', function(done) {
-      request('http://localhost:5000' , function(error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        done();
-      });
-    }),
-
-  it('Posting an image', function(done) {
-    var formData = {
-      file: fs.createReadStream(__dirname+'/test.jpg'),
+  it('Posting an image', (done) => {
+    const formData = {
+      file: fs.createReadStream(`${__dirname}/test.jpg`),
     };
-    request.post({url:'http://localhost:5000', formData: formData}, function(err,response,body){
+    request.post({ url: 'http://localhost:5000', formData }, (err, response, body) => {
       console.log(body);
-      image=body;
+      image = body;
       expect(response.statusCode).to.equal(200);
       done();
     });
   });
 
-  it('Gets an image', function(done) {
-    request('http://localhost:5000/1' , function(error, response, body) {
+  it('Gets an image', (done) => {
+    request('http://localhost:5000/1', (error, response, body) => {
       expect(response.statusCode).to.equal(200);
       done();
     });
   });
 
-  afterEach( ( done ) => {
-    server.close(function () { console.log('\nServer closed!');done() });
-  })
-
+  afterEach((done) => {
+    server.close(() => { console.log('\nServer closed!'); done(); });
+  });
 });
