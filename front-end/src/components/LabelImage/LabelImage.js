@@ -64,26 +64,25 @@ export default class LabelImage extends Component {
 			<div className="container-fluid p-0">
 				<div className="row m-0">
 					<div className="col-2 details pt-5 pl-1">
-							NAME : {image.name}<br/><br/>
-							HEIGHT : {this.state.height}<br/><br/>
-							WIDTH : {this.state.width}<br/><br/>
+						<h6>NAME : {image.name}</h6>
+						<h6>HEIGHT : {this.state.height}</h6>
+						<h6>WIDTH : {this.state.width}</h6>
 						<hr/>
-							LABEL : <input
+						<h6>LABEL : <input
 							className="Label"
 							placeholder="Label"
 							value={image.label||' '}
 							onChange={e => {
 								let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-								//make changes to ingredients
-								imageCopy.label= e.target.value; //whatever new ingredients are
+								imageCopy.label= e.target.value;
 								this.setState({
 									image: imageCopy
 								});
 							}}
-							autoFocus/><br/><br/>
-							COORDINATES : ({image.x},{image.y})<br/><br/>
-							LABEL HEIGHT : {image.height}<br/><br/>
-							LABEL WIDTH : {image.width}<br/><br/>
+							autoFocus/></h6>
+						<h6>COORDINATES : ({image.x},{image.y})</h6>
+						<h6>LABEL HEIGHT : {image.height}</h6>
+						<h6>LABEL WIDTH : {image.width}</h6>
 						<div className="button mt-2 p-0 m-0 row justify-content-center">
 							<button type="submit" className="btn p-1"  onClick={this.handleSubmit}>Done</button>
 						</div>
@@ -96,11 +95,10 @@ export default class LabelImage extends Component {
 								// console.log(e);
 								if(image.has_label==='false')
 								{let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-									//make changes to ingredients
 									imageCopy.x= e.evt.offsetX-25,
 									imageCopy.y= e.evt.offsetY-25,
 									imageCopy.height=50,
-									imageCopy.width=50//whatever new ingredients are
+									imageCopy.width=50
 									this.setState({
 										isDragging: false,
 										image: imageCopy

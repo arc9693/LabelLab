@@ -19,7 +19,7 @@ export default class DisplayImage extends Component {
 					return;
 				}
 				const data=response.body;
-				console.log(JSON.stringify(data));
+				//console.log(JSON.stringify(data));
 				this.setState({
 					image:data[0]
 				})
@@ -58,20 +58,20 @@ export default class DisplayImage extends Component {
 			<div className="container-fluid p-0">
 				<div className="row m-0">
 					<div className="col-2 details pt-5 pl-1">
-					NAME : {image.name}<br/><br/>
-					HEIGHT : {this.state.height}<br/><br/>
-					WIDTH : {this.state.width}<br/><br/>
+						<h6>NAME :<br/> {image.name}</h6>
+						<h6>HEIGHT : {this.state.height}</h6>
+						<h6>WIDTH : {this.state.width}</h6>
 						{image.has_label==='true'&&(<div>	<hr/>
-					LABEL : {image.label}<br/><br/>
-					COORDINATES : ({image.x},{image.y})<br/><br/>
-					LABEL HEIGHT : {image.height}<br/><br/>
-					LABEL WIDTH : {image.width}<br/><br/></div>)}
+							<h6>LABEL : {image.label}</h6>
+							<h6>COORDINATES : ({image.x},{image.y})</h6>
+							<h6>LABEL HEIGHT : {image.height}</h6>
+							<h6>LABEL WIDTH : {image.width}</h6></div>)}
 						<div className="button mt-2 p-0 m-0 row justify-content-center">
 							{image.has_label==='false'&&(<button className="btn p-1" onClick={this.routeChange}>Add label</button>)}
 							{image.has_label==='true'&&(<button className="btn p-1" onClick={this.routeChange}>Edit label</button>)}
 						</div>
 					</div>
-					<div className="col-10 displayedImage">
+					<div className="col-10">
 						<div className="row justify-content-center p-3">
 							<canvas ref="canvas" height={this.state.height} width={this.state.width}>
 								<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name}/>

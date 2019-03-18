@@ -4,7 +4,7 @@
     --color2: rgba(255, 0, 34, 1);
     --color3: rgba(251, 245, 243, 1);
     --color4: rgba(253, 255, 252, 1);
-    --color5: rgba(163, 163, 128, 1);
+    --color5:  rgb(154, 154, 106);
 }
 body{
   font-family: 'Avenir', Helvetica, Arial, sans-serif  !important;
@@ -14,7 +14,6 @@ body{
 }
 nav{
   background-color: var(--color1);
-  box-shadow: 0 8px 6px -5px var(--color5);
 }
 .navbar-brand {
   line-height: 1rem !important;

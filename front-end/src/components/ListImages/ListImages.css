@@ -1,3 +1,13 @@
+#ListImages{
+  background-color: var(--color5);
+  height: 90vh;
+  color:white;
+}
+
+#ListImages h2{
+  font-weight: bold;
+}
+
 .hovereffect {
   float: left;
   overflow: hidden;
@@ -81,8 +91,60 @@
 a:hover{
   color:var(--color5) !important;
 }
-.ImagesList{
-  overflow: scroll;
-  overflow-x: hidden;
-  max-height: 70vh;
+.refreshButton{
+  color:var(--color5) !important;
+  background-color: white !important;
+  border:none;
+  padding: 8px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1.0em;
+}
+.refreshButton:focus{
+  outline:none;
+}
+
+#ListImages .searchQueryForm{
+    position: relative;
+    height: 35px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 2px solid white;
+    padding: 5px;
+    width: 150px;
+    cursor: pointer;
+}
+
+#ListImages input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 35px;
+    line-height: 35px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 11px;
+    display: block;
+    color:var(--color5);
+}
+
+#ListImages .fa{
+    box-sizing: border-box;
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 1.0em;
+    background: var(--color5);
 }
