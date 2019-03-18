@@ -13,3 +13,6 @@
   border:none;
   color:var(--color5);
 }
+.details input:focus{
+  outline: none;
+}

@@ -89,7 +89,7 @@ export default class LabelImage extends Component {
 						</div>
 					</div>
 					<div className="col-10">
-						<h6 className="font-italic text-muted">Note: Drag the rectangle to mark the area</h6>
+						{image.has_label==="false"&&<h6 className="font-italic text-muted">Note: Click on the image to select an area.</h6>||<br/>}
 						<div className="row justify-content-center">
 							<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name} style={{position:'absolute',zIndex:'-1'}}/>
 							<Stage height={this.state.height} width={this.state.width} style={{cursor:this.state.isDragging?'grabbing':(this.state.isHovered?'grab':(image.has_label==="false"?'crosshair':'unset'))}}  onClick={e => {
