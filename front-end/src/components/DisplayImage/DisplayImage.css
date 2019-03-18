@@ -1,4 +1,26 @@
 canvas{
-  border:3px double #343a40;
   position: absolute;
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+.details{
+  background-color: var(--color5);
+  height:650px;
+  position: fixed;
+  font-size: 0.8rem;
+  font-weight: bold;
+  align-content: center;
+  color:black;
+}
+.button button{
+  background-color: var(--color1);
+  font-size: 0.7rem;
+  color:white;
+}
+.button button:hover{
+  color:var(--color5);
+}
+.displayedImage{
 }

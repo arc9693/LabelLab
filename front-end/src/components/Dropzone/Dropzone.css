@@ -4,11 +4,11 @@
 
 div.filepicker {
 	text-align: center;
-	background-color: #E1E1E1;
+	background-color: rgba(163, 163, 128, 0.48);
 	border-radius: 5px;
 	min-height: 80vh;
-	border: 2px dashed #C7C7C7;
 	padding-top: 20%;
+	border: 2px dashed var(--color5);
 }
 .filepicker .dz-message {
 	font-size: 3vw;

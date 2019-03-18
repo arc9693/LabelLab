@@ -1,5 +1,4 @@
 .konvajs-content{
-  position:absolute !important;
   border:3px double #343a40;
 }
 .labelform{
@@ -7,9 +6,10 @@
   color:white;
   font-size: 0.8rem;
 }
-.labelform input{
-  border-radius: 0;
-  height:1.1rem;
-  background-color: white;
-  color:black;
+.details input{
+  border-radius: 10px;
+  height:1.5rem;
+  background-color: var(--color1);
+  border:none;
+  color:var(--color5);
 }

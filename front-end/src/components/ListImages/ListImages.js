@@ -30,16 +30,22 @@ export default class ListImages extends Component {
 	render() {
 		return(
 			<div>
-				<h4 className="text-center font-weight-bold border-bottom border-3 pb-3 pt-3">YOUR IMAGES</h4>
+				<h4 className="text-center font-weight-bold border-bottom border-3 pb-3 pt-3">YOUR UPLOADS</h4>
 				<div className="container p-0">
-					<div className="row">
+					<div className="row justify-content-center ImagesList">
 						{this.state.Images.map((image, i) => {
 							return(
-								<div className="col-3 p-1" key={image.id}>
-									<a href={"/"+image.id} className="text-primary">
-										<img src={this.state.url+'/uploads/'+image.name} height="100" width="100%" alt={image.name}/>
-									</a>
+								<div class="col-lg-3 col-4 mt-2" key={image.id}>
+									<div class="hovereffect">
+										<img class="img-responsive img-thumbnail" src={this.state.url+'/uploads/'+image.name}/>
+										<div class="overlay">
+											<h2>
+												<a href={"/"+image.id}><i class="far fa-eye fa-2x"></i></a>
+											</h2>
+										</div>
+									</div>
 								</div>
+
 							);
 						})}
 
