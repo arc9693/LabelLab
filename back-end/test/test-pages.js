@@ -1,8 +1,9 @@
 const { expect } = require('chai');
 const request = require('request');
-const server = require('http').createServer(app);
 const fs = require('fs');
 const app = require('../app');
+const server = require('http').createServer(app);
+
 
 describe('CHECK ROUTES\n', () => {
   beforeEach(() => {
