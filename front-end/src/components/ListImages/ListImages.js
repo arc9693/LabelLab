@@ -75,7 +75,7 @@ export default class ListImages extends Component {
 									<button onClick={(e)=>this.handleSubmit(e)} type="button"><i className="fa fa-search"></i></button>
 								</div>
 							</div>
-							<button className="p-1 refreshButton" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch() }}><i className="fas fa-redo-alt"></i></button>
+							<button className="p-1 refreshButton" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch() }}><i className="fas fa-sync-alt"></i></button>
 						</div>
 					</div>
 					<div className="row justify-content-start m-0 pt-3 pl-5 pr-5">

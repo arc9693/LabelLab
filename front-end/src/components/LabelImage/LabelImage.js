@@ -13,8 +13,34 @@ export default class LabelImage extends Component {
 			isHovered:false,
 			isDrawing:false
 		};
+		this.fetch= this.fetch.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onImgLoad = this.onImgLoad.bind(this);
+		this.refresh = this.refresh.bind(this);
+	}
+
+	componentDidMount() {
+		this.fetch();
+		const stage = this.transformer.getStage();
+		const rectangle = stage.findOne(".label");
+		this.transformer.attachTo(rectangle);
+		this.transformer.getLayer().batchDraw();
+	}
+
+	fetch() {
+		request
+			.get(this.state.url+this.props.match.params.id)
+			.query(null)
+			.set('Accept', 'application/json')
+			.end ((error, response)=>{
+				if(error){console.log(error);
+					this.props.history.push('*/*/*');return;}
+				const data=response.body;
+				// console.log(JSON.stringify(data));
+				this.setState({
+					image:data[0]
+				})
+			})
 	}
 
 	handleSubmit(e) {
@@ -31,27 +57,6 @@ export default class LabelImage extends Component {
 			})
 	}
 
-	componentDidMount() {
-		request
-			.get(this.state.url+this.props.match.params.id)
-			.query(null)
-			.set('Accept', 'application/json')
-			.end ((error, response)=>{
-				if(error){console.log(error);
-					this.props.history.push('*/*/*');return;}
-				const data=response.body;
-				// console.log(JSON.stringify(data));
-				this.setState({
-					image:data[0]
-				})
-			})
-
-		const stage = this.transformer.getStage();
-		const rectangle = stage.findOne(".label");
-		this.transformer.attachTo(rectangle);
-		this.transformer.getLayer().batchDraw();
-	}
-
 	onImgLoad ({ target: img }) {
 		this.setState({
 			width: img.width,
@@ -59,10 +64,19 @@ export default class LabelImage extends Component {
 		});
 	}
 
+	refresh (){
+		this.fetch()
+		this.setState({
+			isDragging: false,
+			isHovered:false,
+			isDrawing:false
+		})
+	}
+
 	render() {
 		var {image}=this.state;
 		return (
-			<div className="container-fluid p-0">
+			<div className="container-fluid p-0" id="LabelImage">
 				<div className="row m-0">
 					<div className="col-2 details pt-5 pl-1">
 						<h6>NAME : {image.name}</h6>
@@ -85,7 +99,8 @@ export default class LabelImage extends Component {
 						<h6>LABEL HEIGHT : {image.height}</h6>
 						<h6>LABEL WIDTH : {image.width}</h6>
 						<div className="button mt-2 p-0 m-0 row justify-content-center">
-							<button type="submit" className="btn p-1"  onClick={this.handleSubmit}>Done</button>
+							<button className="m-1 p-1" data-toggle="tooltip" title="Done" onClick={this.handleSubmit}><i className="fas fa-check"></i></button>
+							<button className="m-1 p-1" data-toggle="tooltip" title="Reset" onClick={this.refresh}><i className="fas fa-undo"></i></button>
 						</div>
 					</div>
 					<div className="col-10">
