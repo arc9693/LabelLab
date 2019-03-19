@@ -67,8 +67,9 @@ export default class DisplayImage extends Component {
 							<h6>LABEL HEIGHT : {image.height}</h6>
 							<h6>LABEL WIDTH : {image.width}</h6></div>)}
 						<div className="button mt-2 p-0 m-0 row justify-content-center">
-							{image.has_label==='false'&&(<button className="btn p-1" onClick={this.routeChange}>Add label</button>)}
-							{image.has_label==='true'&&(<button className="btn p-1" onClick={this.routeChange}>Edit label</button>)}
+							{image.has_label==='false'&&(<button className="btn p-1 m-1" onClick={this.routeChange}>Add label</button>)}
+							{image.has_label==='true'&&(<button className="btn p-1 m-1" onClick={this.routeChange}>Edit label</button>)}
+							<button className="btn p-1 m-1" onClick={(e)=>this.props.history.push('/')}>Back</button>
 						</div>
 					</div>
 					<div className="col-10">
