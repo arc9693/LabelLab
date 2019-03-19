@@ -82,14 +82,16 @@ export default class ListImages extends Component {
 						{this.state.FilteredImages.map((image, i) => {
 							return(
 								<div className="col-lg-3 col-4 mt-1 p-1" key={image.id}>
-									<div className="hovereffect">
-										<img className="img-responsive" src={this.state.url+'/uploads/'+image.name}/>
-										<div className="overlay">
-											<h2>
-												<a href={"/"+image.id}><i className="far fa-eye fa-2x"></i></a>
-											</h2>
+									<a href={"/"+image.id}>
+										<div className="hovereffect">
+											<img className="img-responsive" src={this.state.url+'/uploads/'+image.name}/>
+											<div className="overlay">
+												<h2>
+													<a href={"/"+image.id}><i className="far fa-eye fa-2x"></i></a>
+												</h2>
+											</div>
 										</div>
-									</div>
+									</a>
 								</div>
 							);
 						})}

@@ -2,6 +2,7 @@
   background-color: var(--color5);
   height: 90vh;
   color:white;
+  overflow-y: scroll;
 }
 
 #ListImages h2{
