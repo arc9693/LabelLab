@@ -4,17 +4,15 @@
 
 div.filepicker {
 	text-align: center;
-	background-color: #E1E1E1;
+	background-color: #EEE;
 	border-radius: 5px;
-	min-height: 80vh;
-	border: 2px dashed #C7C7C7;
+	min-height: 55vh;
 	padding-top: 20%;
+	border: 1.5px dashed var(--color5);
+	border-radius: 0;
 }
 .filepicker .dz-message {
-	font-size: 3vw;
-	color: #37474f;
-	top: 50%;
-	width: 100%;
+	display: none;
 }
 .dropzone .dz-preview.dz-image-preview {
 	background: transparent !important;

@@ -9,8 +9,8 @@ function App() {
 	return (
 		<Router>
 			<div>
-				<nav className="navbar navbar-light bg-dark">
-					<Link to="/" className="navbar-brand text-light"><span className="upper">LABEL</span><br></br><span className="lower">LAB</span></Link>
+				<nav className="navbar navbar-light">
+					<Link to="/" className="navbar-brand"><span className="upper">LABEL</span><br></br><span className="lower">LAB</span></Link>
 				</nav>
 				<Switch>
 					<Route exact path="/" component={Home} />

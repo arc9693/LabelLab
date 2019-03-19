@@ -1,19 +1,35 @@
+@import "https://use.fontawesome.com/releases/v5.7.2/css/all.css";
+:root{
+    --color1: rgba(5, 5, 5, 1);
+    --color2: rgba(255, 0, 34, 1);
+    --color3: rgba(251, 245, 243, 1);
+    --color4: rgba(253, 255, 252, 1);
+    --color5:  rgb(154, 154, 106);
+}
 body{
   font-family: 'Avenir', Helvetica, Arial, sans-serif  !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color4) !important;
+}
+nav{
+  background-color: var(--color1);
 }
 .navbar-brand {
-    line-height: 1.2rem !important;
-    padding: 10px 0px 10px 20px;
+  line-height: 1rem !important;
+  padding: 10px 0px 10px 20px;
+}
+.navbar-brand:hover .upper,.navbar-brand:hover .lower{
+  color: var(--color5) !important;
 }
 .upper {
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  color:white;
 }
 .lower {
   font-size:0.8rem;
   font-weight: 700;
   color: #9c9c9c;
-  letter-spacing: 2.4rem;
+  letter-spacing: 2rem;
 }

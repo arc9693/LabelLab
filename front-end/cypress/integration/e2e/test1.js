@@ -63,20 +63,21 @@ describe('Display and Label image', function() {
 		cy.visit('/')
 		cy.wait('@HomePageApi').then((xhr)=>{
 			expect(xhr.status).to.eq(200)
-			id=xhr.responseBody[0].id
+			var res=xhr.responseBody;
+			id=xhr.responseBody[res.length-1].id
 			cy.route('GET', 'http://localhost:5000/'+id).as('ImageDisplayApi')
 			cy.route('PUT', 'http://localhost:5000/'+id).as('ImageUpdateApi')
-			cy.get(':nth-child(1) > .text-primary > img').click()
+			cy.get(':nth-child(1) > :nth-child(1) > .hovereffect > .img-responsive').click()
 			cy.wait('@ImageDisplayApi').its('status').should('be', 200)
 			cy.get('.btn').click()
 			cy.wait('@ImageDisplayApi').its('status').should('be', 200)
 			cy.get('input').clear().type('TEST LABEL')
-			cy.get('.btn').click()
+			cy.get('[title="Done"]').click()
 			cy.wait('@ImageUpdateApi').its('status').should('be', 200)
 			cy.wait('@ImageDisplayApi').then((xhr)=>{
 				expect(xhr.response.body[0].label).to.equal(' TEST LABEL');
 			})
 		})
 	})
-	
+
 })
