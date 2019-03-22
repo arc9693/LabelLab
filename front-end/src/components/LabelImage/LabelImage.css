@@ -1,5 +1,8 @@
-.konvajs-content{
-  border:3px double #343a40;
+#LabelImage img{
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
 }
 .labelform{
   background-color: rgba(0,0,0,0.5);
@@ -11,23 +14,10 @@
   height:1.5rem;
   background-color: var(--color1);
   border:none;
-  color:var(--color5);
+  color:var(--color2);
   padding: 12px;
   font-weight: bold;
 }
 .details input:focus{
   outline: none;
-}
-#LabelImage .details button{
-  border:none;
-  padding: 8px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  font-size: 1.0em;
-}
-
-#LabelImage .details button:focus{
-  outline: none;
-  border:none;
 }

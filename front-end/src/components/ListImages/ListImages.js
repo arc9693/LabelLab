@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import request from "superagent";
+import Fab from '@material-ui/core/Fab';
+import IconButton from '@material-ui/core/IconButton';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import SearchIcon from '@material-ui/icons/Search';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 import './ListImages.css';
 export default class ListImages extends Component {
 	constructor(props) {
@@ -72,16 +78,16 @@ export default class ListImages extends Component {
 											this.setState({
 												search_label: e.target.value
 											});}}/>
-									<button onClick={(e)=>this.handleSubmit(e)} type="button"><i className="fa fa-search"></i></button>
+									<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="search"  onClick={(e)=>this.handleSubmit(e)}  className="ml-1 searchButton"><SearchIcon /></Fab>
 								</div>
 							</div>
-							<button className="p-1 refreshButton" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch() }}><i className="fas fa-sync-alt"></i></button>
+							<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch() }} className="ml-3 refreshButton"><RefreshIcon /></Fab>
 						</div>
 					</div>
 					<div className="row justify-content-start m-0 pt-3 pl-5 pr-5">
-						{this.state.FilteredImages.map((image, i) => {
-							return(
-								<div className="col-lg-3 col-4 mt-1 p-1" key={image.id}>
+						<GridList cellHeight={140} cols={4}>
+							{this.state.FilteredImages.map((image, i) => (
+								<GridListTile key={image.id} cols={1}>
 									<a href={"/"+image.id}>
 										<div className="hovereffect">
 											<img className="img-responsive" src={this.state.url+'/uploads/'+image.name}/>
@@ -92,10 +98,9 @@ export default class ListImages extends Component {
 											</div>
 										</div>
 									</a>
-								</div>
-							);
-						})}
-
+								</GridListTile>
+							))}
+						</GridList>
 					</div>
 				</div>
 			</div>

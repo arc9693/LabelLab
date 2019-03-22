@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DropzoneComponent from 'react-dropzone-component';
+import Paper from '@material-ui/core/Paper';
 import './Dropzone.css'
 export default class Dropzone extends Component {
 	constructor(props) {
@@ -36,6 +37,6 @@ export default class Dropzone extends Component {
 			success: (file,path) => this.success(file, path)
 		};
 
-		return <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} />
+		return ( <Paper elevation={8}><DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} /></Paper>)
 	}
 }

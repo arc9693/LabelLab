@@ -1,13 +1,13 @@
 @import "https://use.fontawesome.com/releases/v5.7.2/css/all.css";
 :root{
-    --color1: rgba(5, 5, 5, 1);
-    --color2: rgba(255, 0, 34, 1);
+    --color1: #000000;
+    --color2: #ffa000;
     --color3: rgba(251, 245, 243, 1);
-    --color4: rgba(253, 255, 252, 1);
-    --color5:  rgb(154, 154, 106);
+    --color4: #E1E2E1;
+    --color5: #484848;
 }
 body{
-  font-family: 'Avenir', Helvetica, Arial, sans-serif  !important;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color4) !important;
@@ -20,7 +20,10 @@ nav{
   padding: 10px 0px 10px 20px;
 }
 .navbar-brand:hover .upper,.navbar-brand:hover .lower{
-  color: var(--color5) !important;
+  color: var(--color4) !important;
+}
+.navbar-brand:focus{
+  outline: none;
 }
 .upper {
   font-weight: 900;
@@ -32,4 +35,7 @@ nav{
   font-weight: 700;
   color: #9c9c9c;
   letter-spacing: 2rem;
+}
+a:focus{
+  outline: none;
 }

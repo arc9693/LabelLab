@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import request from "superagent";
 import { Stage, Layer, Rect,Transformer } from 'react-konva';
+import Fab from '@material-ui/core/Fab';
+import IconButton from '@material-ui/core/IconButton';
+import CheckIcon from '@material-ui/icons/Check';
+import UndoIcon from '@material-ui/icons/Undo';
+import Paper from '@material-ui/core/Paper';
 import './LabelImage.css'
 export default class LabelImage extends Component {
 	constructor(props) {
@@ -98,85 +103,87 @@ export default class LabelImage extends Component {
 						<h6>COORDINATES : ({image.x},{image.y})</h6>
 						<h6>LABEL HEIGHT : {image.height}</h6>
 						<h6>LABEL WIDTH : {image.width}</h6>
-						<div className="button mt-2 p-0 m-0 row justify-content-center">
-							<button className="m-1 p-1" data-toggle="tooltip" title="Done" onClick={this.handleSubmit}><i className="fas fa-check"></i></button>
-							<button className="m-1 p-1" data-toggle="tooltip" title="Reset" onClick={this.refresh}><i className="fas fa-undo"></i></button>
+						<div className="mt-2 p-0 m-0 row justify-content-center">
+							<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="done"  onClick={this.handleSubmit}  className="ml-1 searchButton"><CheckIcon /></Fab>
+							<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="undo"  onClick={this.handleSubmit}  className="ml-1 searchButton"><UndoIcon /></Fab>
 						</div>
 					</div>
 					<div className="col-10">
 						{image.has_label==="false"&&<h6 className="font-italic text-muted">Note: Click on the image to select an area.</h6>||<br/>}
 						<div className="row justify-content-center">
-							<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name} style={{position:'absolute',zIndex:'-1'}}/>
-							<Stage height={this.state.height} width={this.state.width} style={{cursor:this.state.isDragging?'grabbing':(this.state.isHovered?'grab':(image.has_label==="false"?'crosshair':'unset'))}}
-								onMouseDown={(e)=>{
-									var cx=e.evt.offsetX;
-									var cy=e.evt.offsetY;
-									if((cx>=image.x&&cx<=image.x+image.width)&&(cy>=image.y&&cy<=image.y+image.height))
-									{
-										this.setState({hasDrawn:true});}
-									else this.setState({hasDrawn:false});
-									if(!this.state.hasDrawn)
-									{	let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-										imageCopy.x=cx;
-										imageCopy.y=cy;
-										imageCopy.height=0;
-										imageCopy.width=0;
-										this.setState({isDrawing:true,image:imageCopy});}
-								}}
-								onMouseMove={(e)=>{
-									if(this.state.isDrawing===true&&!this.state.hasDrawn)
-									{ let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-										imageCopy.height=-image.y+e.evt.offsetY;
-										imageCopy.width=-image.x+e.evt.offsetX;
-										this.setState({isDrawing:true,image:imageCopy})}
-								}}
-								onMouseUp={()=>{this.setState({isDrawing:false,hasDrawn:true})}}
-							>
-								<Layer>
-									<Rect
-										name="label"
-										x={image.x}
-										y={image.y}
-										width={image.width}
-										height={image.height}
-										draggable
-										onMouseOver={()=>{this.setState({isHovered:true})}}
-										onMouseOut={()=>{this.setState({isHovered:false})}}
-										onDragStart={() => {
-											this.setState({
-												isDragging: true,
-												isHovered: false
-											});
-										}}
-										onDragEnd={e => {
-											let imageCopy = JSON.parse(JSON.stringify(this.state.image))
-											imageCopy.x= Math.round(e.target.x());
-											imageCopy.y= Math.round(e.target.y())
-											this.setState({
-												isDragging: false,
-												isHovered: true,
-												image: imageCopy
-											});
-										}}
-										onTransform={e=>{
-											var temp=e.currentTarget.attrs;
-											let imageCopy = JSON.parse(JSON.stringify(this.state.image));
-											imageCopy.width= Math.round((temp.width)*(temp.scaleX));
-											imageCopy.height= Math.round((temp.height)*(temp.scaleY));
-											this.setState({
-												isDragging: false,
-												image: imageCopy
-											});
-										}}
-									/>
-									<Transformer
-										ref={node => {
-											this.transformer = node;
-										}}
-										rotateEnabled={false}
-									/>
-								</Layer>
-							</Stage>
+							<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name} style={{position:'absolute'}}/>
+							<Paper elevation={8} style={{height:this.state.height,width:this.state.width}}>
+								<Stage height={this.state.height} width={this.state.width} style={{cursor:this.state.isDragging?'grabbing':(this.state.isHovered?'grab':(image.has_label==="false"?'crosshair':'unset'))}}
+									onMouseDown={(e)=>{
+										var cx=e.evt.offsetX;
+										var cy=e.evt.offsetY;
+										if((cx>=image.x&&cx<=image.x+image.width)&&(cy>=image.y&&cy<=image.y+image.height))
+										{
+											this.setState({hasDrawn:true});}
+										else this.setState({hasDrawn:false});
+										if(!this.state.hasDrawn)
+										{	let imageCopy = JSON.parse(JSON.stringify(this.state.image))
+											imageCopy.x=cx;
+											imageCopy.y=cy;
+											imageCopy.height=0;
+											imageCopy.width=0;
+											this.setState({isDrawing:true,image:imageCopy});}
+									}}
+									onMouseMove={(e)=>{
+										if(this.state.isDrawing===true&&!this.state.hasDrawn)
+										{ let imageCopy = JSON.parse(JSON.stringify(this.state.image))
+											imageCopy.height=-image.y+e.evt.offsetY;
+											imageCopy.width=-image.x+e.evt.offsetX;
+											this.setState({isDrawing:true,image:imageCopy})}
+									}}
+									onMouseUp={()=>{this.setState({isDrawing:false,hasDrawn:true})}}
+								>
+									<Layer>
+										<Rect
+											name="label"
+											x={image.x}
+											y={image.y}
+											width={image.width}
+											height={image.height}
+											draggable
+											onMouseOver={()=>{this.setState({isHovered:true})}}
+											onMouseOut={()=>{this.setState({isHovered:false})}}
+											onDragStart={() => {
+												this.setState({
+													isDragging: true,
+													isHovered: false
+												});
+											}}
+											onDragEnd={e => {
+												let imageCopy = JSON.parse(JSON.stringify(this.state.image))
+												imageCopy.x= Math.round(e.target.x());
+												imageCopy.y= Math.round(e.target.y())
+												this.setState({
+													isDragging: false,
+													isHovered: true,
+													image: imageCopy
+												});
+											}}
+											onTransform={e=>{
+												var temp=e.currentTarget.attrs;
+												let imageCopy = JSON.parse(JSON.stringify(this.state.image));
+												imageCopy.width= Math.round((temp.width)*(temp.scaleX));
+												imageCopy.height= Math.round((temp.height)*(temp.scaleY));
+												this.setState({
+													isDragging: false,
+													image: imageCopy
+												});
+											}}
+										/>
+										<Transformer
+											ref={node => {
+												this.transformer = node;
+											}}
+											rotateEnabled={false}
+										/>
+									</Layer>
+								</Stage>
+							</Paper>
 						</div>
 					</div>
 				</div>

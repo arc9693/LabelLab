@@ -19,11 +19,3 @@ canvas{
   font-size: 0.8rem !important;
   padding: 5px 20px;
 }
-.button button{
-  background-color: var(--color1);
-  font-size: 0.9rem;
-  color:white;
-}
-.button button:hover{
-  color:var(--color5);
-}
