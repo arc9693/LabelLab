@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import request from "superagent";
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import './DisplayImage.css'
 export default class DisplayImage extends Component {
 	constructor(props) {
@@ -66,17 +68,21 @@ export default class DisplayImage extends Component {
 							<h6>COORDINATES : ({image.x},{image.y})</h6>
 							<h6>LABEL HEIGHT : {image.height}</h6>
 							<h6>LABEL WIDTH : {image.width}</h6></div>)}
-						<div className="button mt-2 p-0 m-0 row justify-content-center">
-							{image.has_label==='false'&&(<button className="btn p-1 m-1" onClick={this.routeChange}>Add label</button>)}
-							{image.has_label==='true'&&(<button className="btn p-1 m-1" onClick={this.routeChange}>Edit label</button>)}
-							<button className="btn p-1 m-1" onClick={(e)=>this.props.history.push('/')}>Back</button>
+						<div className="mt-2 p-0 m-0 row justify-content-center">
+							{image.has_label==='false'&&(<Button variant="contained" size="small" color="secondary" className="btn p-1 m-1" onClick={this.routeChange}>Add label</Button>
+							)}
+							{image.has_label==='true'&&(<Button variant="contained" size="small" color="secondary" className="btn p-1 m-1" onClick={this.routeChange}>Edit label</Button>)}
+							<Button variant="contained" size="small" color="secondary" className="btn p-1 m-1" onClick={(e)=>this.props.history.push('/')}>Back</Button>
 						</div>
 					</div>
 					<div className="col-10">
+
 						<div className="row justify-content-center p-3">
-							<canvas ref="canvas" height={this.state.height} width={this.state.width}>
-								<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name}/>
-							</canvas>
+							<Paper elevation={8} style={{height:this.state.height,width:this.state.width}}>
+								<canvas ref="canvas" height={this.state.height} width={this.state.width}>
+									<img ref="image" onLoad={this.onImgLoad} src={this.state.url+'uploads/'+image.name} alt={image.name}/>
+								</canvas>
+							</Paper>
 						</div>
 					</div>
 				</div>

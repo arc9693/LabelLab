@@ -15,7 +15,7 @@
   position: relative;
   text-align: center;
   cursor: default;
-  height:120px !important;
+  height:100%;
   width: 100%;
 }
 
@@ -47,7 +47,7 @@
   position: relative;
   -webkit-transition: all 0.35s;
   transition: all 0.35s;
-  height: 120px !important;
+  height: 100%;
 }
 
 .hovereffect:hover img {
@@ -90,31 +90,22 @@
   transform: translate3d(0,0,0);
 }
 a:hover{
-  color:var(--color5) !important;
+  color:var(--color2) !important;
 }
-.refreshButton{
-  color:var(--color5) !important;
-  background-color: white !important;
-  border:none;
-  padding: 8px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  font-size: 1.0em;
-}
-.refreshButton:focus{
+
+.refreshButton:focus,.searchButton:focus{
   outline:none;
 }
 
 #ListImages .searchQueryForm{
     position: relative;
-    height: 35px;
+    height: 45px;
     background: white;
     box-sizing: border-box;
     border-radius: 25px;
     border: 2px solid white;
     padding: 5px;
-    width: 150px;
+    width: 160px;
     cursor: pointer;
 }
 
@@ -123,8 +114,8 @@ a:hover{
     top: 0;
     left: 0;
     width: 100%;;
-    height: 35px;
-    line-height: 35px;
+    height: 45px;
+    line-height: 45px;
     outline: 0;
     border: 0;
     display: none;
@@ -135,17 +126,9 @@ a:hover{
     color:var(--color5);
 }
 
-#ListImages .fa{
-    box-sizing: border-box;
-    padding: 8px;
-    width: 32px;
-    height: 32px;
+#ListImages .searchButton{
     position: absolute;
     top: 0;
     right: 0;
     border-radius: 50%;
-    color: white;
-    text-align: center;
-    font-size: 1.0em;
-    background: var(--color5);
 }
