@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 /* GET all images */
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   const sql = 'SELECT * FROM `Images`';
   db.query(sql, (err, result) => {
     if (err) {
@@ -12,6 +12,22 @@ router.get('/', (req, res) => {
       return;
     }
     res.status(200).send(result);
+  });
+});
+
+/* Query labels */
+router.get('/labels', (req, res, next) => {
+  const sql = `SELECT ImageID FROM Labels WHERE Label='${req.query.q}'`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err.code, err.sqlMessage);
+      return res.status(500).send('Bad request');
+    }
+    const response = [];
+    for (let i = 0; i < result.length; i++) {
+      response[i] = result[i].ImageID;
+    }
+    return res.status(200).send(response);
   });
 });
 
