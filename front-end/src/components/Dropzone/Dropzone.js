@@ -23,7 +23,7 @@ export default class Dropzone extends Component {
 	}
 
 	success (file, path){
-		console.log(file,path);
+		// console.log(file,path);
 		Notification.requestPermission();
 		if(Notification.permission === 'granted') {
 			new Notification('File uploaded successfully');

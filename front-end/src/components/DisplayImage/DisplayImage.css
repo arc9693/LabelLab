@@ -19,3 +19,6 @@ canvas{
   font-size: 0.8rem !important;
   padding: 5px 20px;
 }
+.iconbutton:focus{
+  outline: none;
+}
