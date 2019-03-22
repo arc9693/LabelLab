@@ -70,8 +70,8 @@ export default class DisplayImage extends Component {
 							</ul>
 						</div>)}
 						<div className="mt-2 p-0 m-0 row justify-content-center">
-							<Fab color="secondary" size="small" data-toggle="tooltip" title="Add label"  onClick={(e)=>this.props.history.push(`/label/`+this.state.id)}  className="ml-1 iconbutton"><AddIcon /></Fab>
-							{labels.length!==0&&(<Fab color="secondary" size="small" data-toggle="tooltip" title="Remove labels" className="ml-1 iconbutton"><RemoveIcon /></Fab>)}
+							<Fab color="secondary" size="small" data-toggle="tooltip" title="Add label"  onClick={(e)=>this.props.history.push(this.state.id+`/labels/add`)}  className="ml-1 iconbutton"><AddIcon /></Fab>
+							{labels.length!==0&&(<Fab color="secondary" size="small" data-toggle="tooltip" title="Remove labels" onClick={(e)=>this.props.history.push(this.state.id+`/labels/remove`)} className="ml-1 iconbutton"><RemoveIcon /></Fab>)}
 							<Fab color="secondary" size="small" data-toggle="tooltip" title="Delete image" onClick={this.deleteImage}  className="ml-1 iconbutton"><DeleteIcon /></Fab>
 							<Fab color="secondary" size="small" data-toggle="tooltip" title="Back to all images"  onClick={(e)=>this.props.history.push('/')}  className="ml-1 iconbutton"><KeyboardReturnIcon /></Fab>
 						</div>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
 import Home from "./components/Home/Home"
 import DisplayImage from "./components/DisplayImage/DisplayImage"
 import LabelImage from "./components/LabelImage/LabelImage"
+import RemoveImageLabels from "./components/RemoveImageLabels/RemoveImageLabels"
 import NotFound from "./components/NotFound/NotFound"
 import './App.css'
 
@@ -48,7 +49,8 @@ function App() {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/:id" component={DisplayImage} />
-							<Route exact path="/label/:id" component={LabelImage} />
+							<Route exact path="/:id/labels/add" component={LabelImage} />
+							<Route exact path="/:id/labels/remove" component={RemoveImageLabels} />
 							<Route path="*" component={NotFound} />
 						</Switch>
 					</MuiThemeProvider>

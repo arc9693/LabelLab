@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import request from "superagent";
 import { Stage, Layer, Rect,Transformer,Group,Text } from 'react-konva';
 import Fab from '@material-ui/core/Fab';
-import IconButton from '@material-ui/core/IconButton';
 import CheckIcon from '@material-ui/icons/Check';
 import ReplayIcon from '@material-ui/icons/Replay';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -94,13 +93,13 @@ export default class LabelImage extends Component {
 				<div className="row m-0">
 					<div className="col-2 details pt-5 pl-1">
 						<h6>NAME : {image.Name}</h6><Divider/>
-						<h6>HEIGHT : {this.state.height}</h6><Divider/>
-						<h6>WIDTH : {this.state.width}</h6><Divider/>
+						<h6>HEIGHT : {image.height}</h6><Divider/>
+						<h6>WIDTH : {image.width}</h6><Divider/>
 						<div>
 							<h6 className="mb-0">LABELS : </h6>
 							<ul>
 								{this.state.labels.map(function(label, index){
-									return (<li key={index}>{label.Label}</li>)})}
+									return (<li key={label.ID}>{label.Label}</li>)})}
 								<li><input
 									className="Label"
 									placeholder="Label"
@@ -154,13 +153,14 @@ export default class LabelImage extends Component {
 									<Layer>
 										<Group>{this.state.labels.map(function(label, index){
 											return (<Rect name="label"
+												key={label.ID}
 												x={label.x}
 												y={label.y}
 												width={label.width}
 												height={label.height}
 												stroke="#484848"/>)})}
 										{this.state.labels.map(function(label, index){
-											return (<Text x={label.x} y={label.y+label.height+10} text={label.Label} fontFamily='sans-serif' fontSize={18} padding={5} fill='#484848' />)})}
+											return (<Text key={label.ID} x={label.x} y={label.y+label.height+10} text={label.Label} fontFamily='sans-serif' fontSize={18} padding={5} fill='#484848' />)})}
 										</Group>
 										<Rect
 											name="label"
