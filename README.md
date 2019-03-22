@@ -37,7 +37,7 @@ create database LabelLab
 ```
 2. In the command line terminal or bash,type:
 ```
-mysql -u root -p  LabelLab < LabelLab.sql
+mysql -u root -p < LabelLab.sql
 ```
 #### Set up backend
 - Open a new terminal in the project folder and type:
@@ -74,4 +74,3 @@ npm test
 cd front-end
 npm run cypress
 ```
-
