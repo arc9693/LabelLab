@@ -15,6 +15,7 @@ export default class DisplayImage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { url:"http://localhost:5000/",id:this.props.match.params.id,image:{},labels:[] };
+		this.deleteImage = this.deleteImage.bind(this);
 	}
 
 	componentDidMount() {
@@ -36,6 +37,22 @@ export default class DisplayImage extends Component {
 				})
 			})}
 
+	deleteImage(e)
+	{
+		e.preventDefault();
+		request
+			.delete(this.state.url+this.props.match.params.id)
+			.query(null)
+			.set('Accept', 'application/json')
+			.end ((error)=>{
+				if(error){
+					console.log(error);
+					this.props.history.push('*/*/*');
+					return;
+				}
+				this.props.history.push('/')
+			})}
+
 	render() {
 		var {image,labels}=this.state;
 		return (
@@ -55,7 +72,7 @@ export default class DisplayImage extends Component {
 						<div className="mt-2 p-0 m-0 row justify-content-center">
 							<Fab color="secondary" size="small" data-toggle="tooltip" title="Add label"  onClick={(e)=>this.props.history.push(`/label/`+this.state.id)}  className="ml-1 iconbutton"><AddIcon /></Fab>
 							{labels.length!==0&&(<Fab color="secondary" size="small" data-toggle="tooltip" title="Remove labels" className="ml-1 iconbutton"><RemoveIcon /></Fab>)}
-							<Fab color="secondary" size="small" data-toggle="tooltip" title="Delete image"  className="ml-1 iconbutton"><DeleteIcon /></Fab>
+							<Fab color="secondary" size="small" data-toggle="tooltip" title="Delete image" onClick={this.deleteImage}  className="ml-1 iconbutton"><DeleteIcon /></Fab>
 							<Fab color="secondary" size="small" data-toggle="tooltip" title="Back to all images"  onClick={(e)=>this.props.history.push('/')}  className="ml-1 iconbutton"><KeyboardReturnIcon /></Fab>
 						</div>
 					</div>

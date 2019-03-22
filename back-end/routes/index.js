@@ -60,16 +60,24 @@ router.get('/:id', (req, res) => {
   });
 });
 
-/* DELETE AN IMAGE ELEMENT */
+/* DELETE AN IMAGE ELEMENT AND LABELS ASSOCIATED WITH IT */
 router.delete('/:id', (req, res) => {
-  const sql = `DELETE FROM \`Images\` WHERE id=${req.params.id}`;
+  const sql = `DELETE FROM Labels WHERE ImageID=${req.params.id}`;
+  const sql2 = `DELETE FROM \`Images\` WHERE ID=${req.params.id}`;
   db.query(sql, (err) => {
     if (err) {
-    //  console.log(`${err.code} ${err.sqlMessage}`);
+      // console.log(`${err.code} ${err.sqlMessage}`);
       res.status(500).send('Bad request');
       return;
     }
-    res.status(200).send('success');
+    db.query(sql2, (err2) => {
+      if (err2) {
+      // console.log(`${err2.code} ${err2.sqlMessage}`);
+        res.status(500).send('Bad request');
+        return;
+      }
+      res.status(200).send('success');
+    });
   });
 });
 

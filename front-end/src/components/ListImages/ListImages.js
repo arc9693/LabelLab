@@ -31,6 +31,8 @@ export default class ListImages extends Component {
 				.end ((error, response)=>{
 					if(error) {console.log(error);return;}
 					const data=response.body;
+					data.sort(function(b, a){
+						return a.ID-b.ID})
 					this._isMounted &&(
 						this.setState({
 							Images:data,
