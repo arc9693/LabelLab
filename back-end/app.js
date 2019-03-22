@@ -4,13 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mysql = require('mysql');
 const indexRouter = require('./routes/index');
 const ImagePostRouter = require('./routes/postimage');
 
 const app = express();
 
 // database setup
-const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   host: process.env.host,
@@ -25,7 +25,7 @@ connection.connect((err) => {
     console.error(`error connecting: ${err.stack}`);
   }
 
-//  console.log(`connected as id ${connection.threadId}`);
+  console.log(`connected as id ${connection.threadId}`);
 });
 
 global.db = connection;
@@ -65,6 +65,7 @@ app.use((err, req, res, next) => {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  next();
 });
 
 module.exports = app;

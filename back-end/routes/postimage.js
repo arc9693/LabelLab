@@ -1,4 +1,5 @@
 const express = require('express');
+const sizeOf = require('image-size');
 
 const router = express.Router();
 const multer = require('multer');
@@ -11,32 +12,33 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, '../public/uploads/'));
   },
   filename(req, file, cb) {
-    console.log(file);
-    crypto.pseudoRandomBytes(16, (err, raw) => {
+    // console.log(file);
+    crypto.pseudoRandomBytes(16, (err) => {
       if (err) {
       //  console.log(err);
         return cb(err);
       }
       //  console.log(file);
-      cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+      return cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     });
   },
 });
 
 const upload = multer({ storage });
 // POST an image
-router.post('/', upload.single('file'), (req, res, next) => {
+router.post('/', upload.single('file'), (req, res) => {
   // req.file is the `image` file
   // req.body will hold the text fields, if there were any
   if (!req.file) {
-    console.log('No file received');
+    // console.log('No file received');
     res.status(404).send('Error! in image upload.');
   } else {
-    console.log('file received');
-    const sql = `INSERT INTO \`Images\`(\`name\`) VALUES ('${req.file.filename}')`;
-    const query = db.query(sql, (err, result) => {
+    // console.log('File received');
+    const dimesions = sizeOf(req.file.path);
+    const sql = `INSERT INTO \`Images\`(\`name\`,height,width) VALUES ('${req.file.filename}',${dimesions.height},${dimesions.width})`;
+    db.query(sql, (err) => {
       if (err) {
-        console.log(err.code, err.sqlMessage, err);
+        // console.log(err.code, err.sqlMessage, err);
         res.status(500).send('Bad request');
         return;
       }
