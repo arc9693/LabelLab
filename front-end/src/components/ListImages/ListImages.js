@@ -46,7 +46,7 @@ export default class ListImages extends Component {
 			request
 				.get(this.state.url+'/labels')
 				.query({
-					"q":this.state.search_label
+					"q":' '+this.state.search_label
 				})
 				.set('Accept', 'application/json')
 				.end ((error, response)=>{
@@ -56,7 +56,7 @@ export default class ListImages extends Component {
 					for (var i = 0; i < data.length; i++) {
 						for (var j = 0; j < Images.length; j++) {
 							if(Images[j].ID===data[i])
-								FilteredImages.push(Images[i])
+								FilteredImages.push(Images[j])
 						}
 					}
 					this.setState({
@@ -66,6 +66,9 @@ export default class ListImages extends Component {
 						this.setState({
 							NoImageFound:true
 						})
+					else this.setState({
+						NoImageFound:false
+					})
 				}))
 	}
 
@@ -108,7 +111,7 @@ export default class ListImages extends Component {
 									<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="search"  onClick={(e)=>this.handleSubmit(e)}  className="ml-1 searchButton"><SearchIcon /></Fab>
 								</div>
 							</div>
-							<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch() }} className="ml-3 refreshButton"><RefreshIcon /></Fab>
+							<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch(),this.setState({search_label:''}) }} className="ml-3 refreshButton"><RefreshIcon /></Fab>
 						</div>
 					</div>
 					<div className="row justify-content-start m-0 pt-3 pl-5 pr-5">

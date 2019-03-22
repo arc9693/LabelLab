@@ -94,9 +94,9 @@ export default class LabelImage extends Component {
 												y={label.y}
 												width={label.width}
 												height={label.height}
-												stroke="#484848"/>)})}
+												stroke="#fff"/>)})}
 										{this.state.labels.map(function(label, index){
-											return (<Text key={label.ID} x={label.x} y={label.y+label.height+10} text={label.Label} fontFamily='sans-serif' fontSize={18} padding={5} fill='#484848' />)})}
+											return (<Text key={label.ID} x={label.x} y={label.y+label.height+10} text={label.Label} fontFamily='sans-serif' fontSize={18} padding={5} fill='#fff' />)})}
 										</Group>
 									</Layer>
 								</Stage>

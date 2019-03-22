@@ -23,10 +23,11 @@ router.get('/labels', (req, res, next) => {
       console.log(err.code, err.sqlMessage);
       return res.status(500).send('Bad request');
     }
-    const response = [];
+    let response = [];
     for (let i = 0; i < result.length; i++) {
       response[i] = result[i].ImageID;
     }
+    response = [...new Set(response)];
     return res.status(200).send(response);
   });
 });
