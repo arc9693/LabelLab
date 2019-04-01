@@ -59,6 +59,7 @@ export default class LabelImage extends Component {
 		e.preventDefault();
 		if(this.state.newlabel.Label==='') return alert("Please enter a label!");
 		if(this.state.newlabel.x===0&&this.state.newlabel.y===0&&this.state.newlabel.height===0&&this.state.newlabel.width===0)  return alert("Please mark the bounding rectangle!");
+		console.log(this.state.newlabel);
 		request
 			.post(this.state.url+this.props.match.params.id+'/labels/add')
 			.set('Content-Type', 'application/json')
@@ -91,7 +92,7 @@ export default class LabelImage extends Component {
 		return (
 			<div className="container-fluid p-0" id="LabelImage">
 				<div className="row m-0">
-					<div className="col-2 details pt-5 pl-1">
+					<div className="col-12 col-sm-2 details pt-5 pl-1">
 						<h6>NAME : {image.Name}</h6><Divider/>
 						<h6>HEIGHT : {image.height}</h6><Divider/>
 						<h6>WIDTH : {image.width}</h6><Divider/>
@@ -121,7 +122,7 @@ export default class LabelImage extends Component {
 							<Fab color="secondary" size="small" data-toggle="tooltip" title="reset"  onClick={this.refresh}  className="ml-1 iconbutton"><ReplayIcon /></Fab>
 						</div>
 					</div>
-					<div className="col-10">
+					<div className="col-12 col-sm-10 canvascontent">
 						<h6 className="font-italic text-muted">Note: Click on the image to select an area.</h6>
 						<div className="row justify-content-center">
 							<img ref="image" src={this.state.url+'uploads/'+image.Name} alt={image.Name} style={{position:'absolute'}}/>

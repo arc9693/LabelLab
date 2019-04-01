@@ -14,6 +14,17 @@ canvas{
   align-content: center;
   color:white;
 }
+@media (max-width: 500px) {
+      .details{
+        height:inherit;
+        padding: 10px;
+      }
+      .canvascontent{
+        background-color: var(--color5);
+        overflow: scroll;
+        padding: 10px;
+      }
+    }
 .details h6{
   font-weight: bold;
   font-size: 0.8rem !important;

@@ -7,9 +7,12 @@ div.filepicker {
 	background-color: #fff;
 	border-radius: 5px;
 	min-height: 55vh;
-	padding-top: 20%;
 	border: 1.5px dashed var(--color5);
 	border-radius: 0;
+	padding: 0;
+}
+.filepicker .filepicker-file-icon {
+	margin-top: 20%;
 }
 .filepicker .dz-message {
 	display: none;

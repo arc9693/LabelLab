@@ -58,7 +58,7 @@ export default class DisplayImage extends Component {
 		return (
 			<div className="container-fluid p-0">
 				<div className="row m-0">
-					<div className="col-2 details pt-5 pl-1">
+					<div className="col-12 col-sm-2 details pt-5 pl-1">
 						<h6>NAME :<br/> {image.Name}</h6><Divider />
 						<h6>HEIGHT : {image.height}</h6><Divider />
 						<h6>WIDTH : {image.width}</h6><Divider />
@@ -76,10 +76,10 @@ export default class DisplayImage extends Component {
 							<Fab color="secondary" size="small" data-toggle="tooltip" title="Back to all images"  onClick={(e)=>this.props.history.push('/')}  className="ml-1 iconbutton"><KeyboardReturnIcon /></Fab>
 						</div>
 					</div>
-					<div className="col-10">
+					<div className="col-12 col-sm-10 canvascontent">
 						<div className="row justify-content-center mt-3">
 							<img ref="image" src={this.state.url+'uploads/'+image.Name} alt={image.Name} style={{position:'absolute'}}/>
-							<Paper elevation={8} style={{height:this.state.height,width:this.state.width}}>
+							<Paper elevation={0} style={{height:this.state.height,width:this.state.width}}>
 								<Stage height={image.height} width={image.width}>
 									<Layer>
 										<Group>{this.state.labels.map(function(label, index){

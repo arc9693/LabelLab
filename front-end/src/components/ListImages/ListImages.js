@@ -91,9 +91,9 @@ export default class ListImages extends Component {
 			<div id="ListImages">
 				<div className="container p-0">
 					<div className="row m-0 pl-5 pr-3 pt-3 pb-3">
-						<div className="d-flex w-100">
+						<div className="d-flex row w-100">
 							<h2 className="m-0 align-self-center mr-auto">GALLERY</h2>
-							<div className="col-4 mr-2">
+							<div className="col-lg-4 col-10 p-0">
 								<div className="searchQueryForm">
 									<input
 										type="search"
@@ -108,16 +108,21 @@ export default class ListImages extends Component {
 											this.setState({
 												search_label: e.target.value
 											});}}/>
-									<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="search"  onClick={(e)=>this.handleSubmit(e)}  className="ml-1 searchButton"><SearchIcon /></Fab>
+									<Fab color="secondary" size="small" aria-label="Search" data-toggle="tooltip" title="search"  onClick={(e)=>this.handleSubmit(e)}  className="ml-1 searchButton"><SearchIcon /></Fab>
 								</div>
 							</div>
-							<Fab color="secondary" size="small" aria-label="Add" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch(),this.setState({search_label:''}) }} className="ml-3 refreshButton"><RefreshIcon /></Fab>
+							<div className="col-2">
+								<Fab color="secondary" size="small" aria-label="Refresh" data-toggle="tooltip" title="refresh" onClick={ ()=> { this.fetch(),this.setState({search_label:''}) }} className="refreshButton"><RefreshIcon /></Fab>
+							</div>
 						</div>
 					</div>
 					<div className="row justify-content-start m-0 pt-3 pl-5 pr-5">
-						<GridList cellHeight={140} cols={4}>
-							{this.state.NoImageFound&&(<GridListTile cols={3}>
+						<GridList cellHeight={130} cols={4}>
+							{this.state.NoImageFound&&(<GridListTile cols={4}>
 								<h5 style={{color:'var(--color2)'}}>No matching results found :-( </h5>
+							</GridListTile>)}
+							{this.state.FilteredImages.length===0&&(<GridListTile cols={4}>
+								<h5 style={{color:'var(--color2)'}} id="NoImagesMessage">No images uploaded</h5>
 							</GridListTile>)}
 							{this.state.FilteredImages.map((image, i) => (
 								<GridListTile key={image.ID} cols={1}>
